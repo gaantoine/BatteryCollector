@@ -2,6 +2,9 @@
 
 Developed with Unreal Engine 5
 
+This is a small student game project where the player will control a third-person character to move around a small level and collect batteries to fill their charge meter.  The objective of the game is to fill the charge
+meter completely before it reaches zero.
+
 To build the project you will need to have Unreal Engine installed on your computer.
 We used Unreal Engine 5.3.2 for developing this project.
 
