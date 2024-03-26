@@ -6,7 +6,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Pickup.h"
 //You need to include the Box Component header file in order to avoid errors while setting the Root Component
-#include "C:\Program Files\Epic Games\UE_5.3\Engine\Source\Runtime\Engine\Classes\Components\BoxComponent.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 ASpawnVolume::ASpawnVolume()
