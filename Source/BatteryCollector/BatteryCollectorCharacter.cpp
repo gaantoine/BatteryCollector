@@ -10,7 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
-#include "Editor/WorldBrowser/Private/LevelModel.h"
+//#include "Editor/WorldBrowser/Private/LevelModel.h"
 #include "Pickup.h"
 #include "Components/SphereComponent.h"
 
