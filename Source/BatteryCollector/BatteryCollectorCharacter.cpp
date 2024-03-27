@@ -10,6 +10,10 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Editor/WorldBrowser/Private/LevelModel.h"
+#include "Pickup.h"
+#include "Components/SphereComponent.h"
+
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -50,6 +54,11 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	// Create the collection sphere
+	CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
+	CollectionSphere -> SetupAttachment(RootComponent);
+	CollectionSphere->SetSphereRadius(200.f);
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
@@ -81,6 +90,9 @@ void ABatteryCollectorCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
+		//
+		InputComponent->BindAction("Collect", IE_Pressed, this, &ABatteryCollectorCharacter::CollectPickups);
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABatteryCollectorCharacter::Move);
 
@@ -127,4 +139,29 @@ void ABatteryCollectorCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+
+}
+
+void ABatteryCollectorCharacter::CollectPickups()
+{
+	// Get all overallaping actors and store them in an array
+	TArray<AActor*>CollectedActors;
+	CollectionSphere->GetOverlappingActors(CollectedActors);
+
+	// For each actor we collect
+	for (int32 iCollected = 0; iCollected < CollectedActors.Num(); ++iCollected)
+	{
+		// Cast the actor to APickup
+		APickup* const TestPickup = Cast <APickup>(CollectedActors[iCollected]);
+		// If the cast is successful and the pickup is valid and active
+		if (TestPickup && !TestPickup->IsPendingKill() && TestPickup->IsActive())
+
+		{	
+			// Call the pickups::WasCollection function
+			TestPickup->WasCollected();
+			// Deactivate the pickup
+			TestPickup->SetActive(false);
+		}
+	}
+
 }
