@@ -7,6 +7,9 @@
 ABatteryPickup::ABatteryPickup()
 {
 	GetMesh()->SetSimulatePhysics(true);
+
+	//base power level of battery
+	BatteryPower = 150.f;
 }
 
 void ABatteryPickup::WasCollected_Implementation() 
@@ -15,4 +18,10 @@ void ABatteryPickup::WasCollected_Implementation()
 	Super::WasCollected_Implementation();
 	// Destroy battery
 	Destroy();
+}
+
+// report power leve of the battery
+float ABatteryPickup::GetPower()
+{
+	return BatteryPower;
 }

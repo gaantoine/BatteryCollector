@@ -51,6 +51,19 @@ class ABatteryCollectorCharacter : public ACharacter
 
 public:
 	ABatteryCollectorCharacter();
+
+	// accessor function for intial power
+	UFUNCTION(BlueprintPure, Category = "Power")
+	float GetInitialPower();
+
+	// accessor function for current power
+	UFUNCTION(BlueprintPure,Category = "Power")
+	float GetCurrentPower();
+
+	// function to update the charcter's power
+	//@param powerchange this is the amount to change power by, can be + or -
+	UFUNCTION(BlueprintCallable, Category = "Power")
+	void UpdatePower(float PowerChange);
 	
 
 protected:
@@ -72,6 +85,15 @@ protected:
 
 	// To add mapping context
 	virtual void BeginPlay();
+
+	// the starting power level of character
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power")
+	float InitialPower;
+
+private:
+	// Current power level of character
+	UPROPERTY(VisibleAnywhere, Category = "Power")
+	float CharacterPower;
 
 public:
 	/** Returns CameraBoom subobject **/

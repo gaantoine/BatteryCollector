@@ -13,6 +13,7 @@
 //#include "Editor/WorldBrowser/Private/LevelModel.h"
 #include "Pickup.h"
 #include "Components/SphereComponent.h"
+#include "BatteryPickup.h"
 
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -58,6 +59,11 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	CollectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("CollectionSphere"));
 	CollectionSphere -> SetupAttachment(RootComponent);
 	CollectionSphere->SetSphereRadius(200.f);
+
+	// Set base power level for character
+	InitialPower = 2000.f;
+	CharacterPower = InitialPower;
+
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
@@ -148,6 +154,9 @@ void ABatteryCollectorCharacter::CollectPickups()
 	TArray<AActor*>CollectedActors;
 	CollectionSphere->GetOverlappingActors(CollectedActors);
 
+	// variable to keep track of collected power
+	float CollectedPower = 0;
+
 	// For each actor we collect
 	for (int32 iCollected = 0; iCollected < CollectedActors.Num(); ++iCollected)
 	{
@@ -159,9 +168,39 @@ void ABatteryCollectorCharacter::CollectPickups()
 		{	
 			// Call the pickups::WasCollection function
 			TestPickup->WasCollected();
+			// check to see if th pikcup is a batter
+			ABatteryPickup* const TestBattery = Cast<ABatteryPickup>(TestPickup);
+			if (TestBattery)
+			{
+				// increase the collected power
+				CollectedPower += TestBattery->GetPower();
+			}
 			// Deactivate the pickup
 			TestPickup->SetActive(false);
 		}
 	}
 
+	if (CollectedPower > 0)
+	{
+		UpdatePower(CollectedPower);
+	}
+
 }
+
+// reports starting power
+float ABatteryCollectorCharacter::GetInitialPower()
+{
+	return InitialPower;
+}
+
+// reports character power
+float ABatteryCollectorCharacter::GetCurrentPower()
+{
+	return CharacterPower;
+}
+
+void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
+{
+	CharacterPower = CharacterPower + PowerChange;
+}
+
