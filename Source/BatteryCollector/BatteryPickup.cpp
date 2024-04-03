@@ -20,7 +20,7 @@ void ABatteryPickup::WasCollected_Implementation()
 	Destroy();
 }
 
-// report power leve of the battery
+// report power level of the battery
 float ABatteryPickup::GetPower()
 {
 	return BatteryPower;

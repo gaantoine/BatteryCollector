@@ -25,7 +25,7 @@ public:
 	float GetPower();
 
 protected:
-	// will set the amount of power the batter gives to the character
+	// will set the amount of power the battery gives to the character
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float BatteryPower;
 };
