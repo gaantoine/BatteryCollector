@@ -59,6 +59,18 @@ ABatteryCollectorCharacter::ABatteryCollectorCharacter()
 	CollectionSphere -> SetupAttachment(RootComponent);
 	CollectionSphere->SetSphereRadius(200.f);
 
+<<<<<<< Updated upstream
+=======
+	//Sets the base power level for the Character
+	InitialPower = 2000.f;
+	CharacterPower = InitialPower;
+
+	//set the dependence of the speed on the power level
+	SpeedFactor = 0.75f;
+	BaseSpeed = 10.0f;
+
+
+>>>>>>> Stashed changes
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
@@ -165,3 +177,21 @@ void ABatteryCollectorCharacter::CollectPickups()
 	}
 
 }
+<<<<<<< Updated upstream
+=======
+// Reports starting power
+float ABatteryCollectorCharacter::GetInitialPower()
+{
+	return InitialPower;
+// Reports current power
+}float ABatteryCollectorCharacter::GetCurrentPower()
+{
+	return CharacterPower;
+}
+
+void ABatteryCollectorCharacter::UpdatePower(float PowerChange)
+{
+	CharacterPower = CharaxterPower + PowerChange;
+}
+
+>>>>>>> Stashed changes
