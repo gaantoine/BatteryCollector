@@ -1,5 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#pragma once
+#ifndef _BATTERYCOLLECTOR_H_
+#define _BATTERYCOLLECTOR_H_
 
-#include "CoreMinimal.h"
+#include "Engine.h"
+
+#endif
