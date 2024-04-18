@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 //Code contributors: Brandon Villalba
 
+
 using UnrealBuildTool;
 
 public class BatteryCollector : ModuleRules
