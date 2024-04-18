@@ -5,6 +5,8 @@ Developed with Unreal Engine 5
 This is a small student game project where the player will control a third-person character to move around a small level and collect batteries to fill their charge meter.  The objective of the game is to fill the charge
 meter completely before it reaches zero.
 
+The project is based on this tutorial series previously published on YouTube by Epic Games: https://www.youtube.com/watch?v=mSRov77hNR4&list=PLZlv_N0_O1gYup-gvJtMsgJqnEB_dGiM4&index=1
+
 Controls to play the game:
 W, A, S, D: Move the character
 C: Collect batteries
