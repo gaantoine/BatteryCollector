@@ -1,4 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
+//Code contributors: Brandon Villalba, Celina Oseguera
 
 #include "BatteryCollectorGameMode.h"
 #include "BatteryCollectorCharacter.h"
