@@ -8,8 +8,8 @@ meter completely before it reaches zero.
 The project is based on this tutorial series previously published on YouTube by Epic Games: https://www.youtube.com/watch?v=mSRov77hNR4&list=PLZlv_N0_O1gYup-gvJtMsgJqnEB_dGiM4&index=1
 
 Controls to play the game:
-W, A, S, D: Move the character
-C: Collect batteries
+W, A, S, D: Move the character,
+C: Collect batteries,
 Spacebar: Jump
 
 To build the project you will need to have Unreal Engine installed on your computer.
