@@ -2,13 +2,15 @@
 
 Developed with Unreal Engine 5.3.2
 
+Updated to work with Unreal Engine 5.6.1 in October 2025
+
 For instructions on how to download and install the Unreal Engine, please refer to this documentation on the Unreal Engine website:
 https://dev.epicgames.com/documentation/en-us/unreal-engine/installing-unreal-engine
 
 This is a small student game project where the player will control a third-person character to move around a small level and collect batteries to fill their charge meter.  The objective of the game is to fill the charge
 meter completely before it reaches zero.
 
-The project is based on this tutorial series previously published on YouTube by Epic Games: https://www.youtube.com/watch?v=mSRov77hNR4&list=PLZlv_N0_O1gYup-gvJtMsgJqnEB_dGiM4&index=1
+The project is based on this tutorial series previously published on YouTube by Epic Games: https://www.youtube.com/watch?v=mSRov77hNR4\&list=PLZlv\_N0\_O1gYup-gvJtMsgJqnEB\_dGiM4\&index=1
 
 Controls to play the game:
 W, A, S, D: Move the character,
@@ -24,9 +26,10 @@ This video shows the entire process for packaging a .exe file:
 https://www.youtube.com/watch?v=LmLog9CkN3E
 
 Further documentation on the packaging process can be found within these pages on the Unreal Engine website:
-https://dev.epicgames.com/documentation/en-us/unreal-engine/packaging-unreal-engine-projects?application_version=5.3
+https://dev.epicgames.com/documentation/en-us/unreal-engine/packaging-unreal-engine-projects?application\_version=5.3
 https://dev.epicgames.com/documentation/en-us/unreal-engine/preparing-unreal-engine-projects-for-release
 
 Following along with the video should enable you to package a .exe file of this project.
 
 If there are any issues with the code or build process, it may be necessary to resolve them in your IDE.  We used Visual Studio 2022, but others may be suitable.
+
