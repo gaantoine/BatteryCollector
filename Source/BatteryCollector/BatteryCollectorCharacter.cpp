@@ -169,7 +169,7 @@ void ABatteryCollectorCharacter::CollectPickups()
 		// Cast the actor to APickup
 		APickup* const TestPickup = Cast <APickup>(CollectedActors[iCollected]);
 		// If the cast is successful and the pickup is valid and active
-		if (TestPickup && !TestPickup->IsPendingKill() && TestPickup->IsActive())
+		if (IsValid(TestPickup) && TestPickup->IsActive())
 
 		{	
 			// Call the pickups::WasCollection function
