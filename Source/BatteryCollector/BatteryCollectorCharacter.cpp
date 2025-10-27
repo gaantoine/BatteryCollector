@@ -1,5 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-//Code contributors: Celina Oseguera, Allen Antoine
+//Code contributors: Celina Oseguera, Allen Antoine, Jesus Pinarte
 
 
 #include "BatteryCollectorCharacter.h"
@@ -168,7 +168,7 @@ void ABatteryCollectorCharacter::CollectPickups()
 	{
 		// Cast the actor to APickup
 		APickup* const TestPickup = Cast <APickup>(CollectedActors[iCollected]);
-		// If the cast is successful and the pickup is valid and active
+		// If the cast is successful and the pickup is valid and active (this line was changed from the orginal tutorial since IsPendingKill is no longer valid in 5.6.1)
 		if (IsValid(TestPickup) && TestPickup->IsActive())
 
 		{	
